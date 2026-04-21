@@ -1,15 +1,15 @@
-import { ListNode, createLinkedList } from './libs';
+import { ListNode, createLinkedList } from "./libs";
 
 /**
  * @description 遍历单链表
  * @param {ListNode} head 单链表的头节点
  */
 function traverseLinkedList(head) {
-  let res = '';
+  let res = "";
   for (let p = head; p != null; p = p.next) {
-    res += p.val + ' -> ';
+    res += p.val + " -> ";
   }
-  res += 'null';
+  res += "null";
   console.log(res);
 }
 
