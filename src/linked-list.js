@@ -1,15 +1,60 @@
-import { ListNode, createLinkedList } from "./libs";
+export class ListNode {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
+
+export class DoublyListNode {
+  constructor(element, prev, next) {
+    this.val = element;
+    this.next = next;
+    this.prev = prev;
+  }
+}
+
+export const createLinkedList = function (arr) {
+  if (arr == null || arr.length == 0) {
+    return null;
+  }
+  const head = new ListNode(arr[0]);
+  let p = head;
+  for (let i = 1; i < arr.length; i++) {
+    p.next = new ListNode(arr[i]);
+    p = p.next;
+  }
+  return head;
+};
+
+const createDoublyLinkedList = function (arr) {
+  if (arr === null || arr.length === 0) {
+    return null;
+  }
+
+  const head = new DoublyListNode(arr[0], null, null);
+  let p = head;
+
+  // for 循环迭代创建双链表
+  for (let i = 1; i < arr.length; i++) {
+    const newNode = new DoublyListNode(arr[i], null, null);
+    p.next = newNode;
+    newNode.prev = p;
+    p = p.next;
+  }
+
+  return head;
+};
 
 /**
  * @description 遍历单链表
  * @param {ListNode} head 单链表的头节点
  */
 function traverseLinkedList(head) {
-  let res = "";
+  let res = '';
   for (let p = head; p != null; p = p.next) {
-    res += p.val + " -> ";
+    res += p.val + ' -> ';
   }
-  res += "null";
+  res += 'null';
   console.log(res);
 }
 
